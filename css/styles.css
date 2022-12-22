@@ -96,7 +96,7 @@ button {
   font-size: 18px;
   font-family: Raleway;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--navy-blue);
 }
 
@@ -124,6 +124,7 @@ nav {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--navy-blue);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navigation-link::after {
@@ -148,7 +149,6 @@ nav {
   opacity: 1;
 }
 
-/* menu hover color must be  --button-animation */
 .navigation-link:hover {
   color: var(--button-animation);
 }
@@ -217,16 +217,13 @@ nav {
   background-color: var(--iris);
   box-shadow: 0px 3px 1px rgb(48 30 30 / 10%), 0px 2px 1px rgb(0 0 0 / 8%),
     0px 2px 2px rgb(0 0 0 / 12%);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-main:hover {
   background-color: var(--button-animation);
-}
-
-.backdrop.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop {
@@ -241,6 +238,12 @@ nav {
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .modal-closed {
   box-sizing: border-box;
   width: 24px;
@@ -253,6 +256,8 @@ nav {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   padding: 0;
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .main-text-block {
@@ -268,6 +273,7 @@ nav {
   width: 8px;
   height: 8px;
   fill: currentColor;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-close:hover {
@@ -276,15 +282,11 @@ nav {
   color: var(--white);
 }
 
-/* .btn-close:focus {
-  width: 8px;
-  height: 8px;
-  fill: var(--white);
-} */
-
 .modal-closed:hover {
   color: var(--white);
   background-color: var(--iris);
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-closed:focus {
@@ -446,12 +448,15 @@ nav {
   height: 40px;
   background-color: var(--iris);
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .teams-btn:hover {
   background-color: var(--button-animation);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-teams {
@@ -490,10 +495,13 @@ nav {
   border: 1px solid currentColor;
   border-radius: 4px;
   color: #8e8f99;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:hover {
   color: var(--iris);
+  transform: color;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:focus {
@@ -582,10 +590,14 @@ nav {
   height: 40px;
   border-radius: 100px;
   background-color: rgba(255, 255, 255, 0.1);
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-btn:hover {
   background-color: var(--icon-hover);
+  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-btn:focus {
