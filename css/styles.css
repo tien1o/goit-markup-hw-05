@@ -124,7 +124,7 @@ nav {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--navy-blue);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navigation-link::after {
@@ -138,16 +138,28 @@ nav {
   height: 4px;
   background-color: var(--button-animation);
   opacity: 0;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navigation-link.current::after,
+.navigation-link.current::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  position: absolute;
+  right: 0;
+  bottom: -24px;
+  background-color: var(--iris);
+  border-radius: 2px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  left: 0;
+  width: 100%;
+}
+
 .navigation-link:hover::after,
 .navigation-link:focus::after {
   opacity: 1;
 }
 
-.navigation-link.current,
 .navigation-link:hover,
 .navigation-link:focus {
   color: var(--button-animation);
@@ -161,6 +173,7 @@ nav {
 
 .contacts-tel {
   color: var(--slate);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-tel:hover {
@@ -169,6 +182,7 @@ nav {
 
 .contacts-email {
   color: var(--slate);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-email:hover {
@@ -381,7 +395,7 @@ nav {
 
 .team {
   padding: 120px 0;
-  background-color: var(--corn-flower);
+  background-color: var(--cloud);
 }
 
 .teams {
@@ -448,23 +462,20 @@ nav {
   height: 40px;
   background-color: var(--iris);
   border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .teams-btn:hover {
   background-color: var(--button-animation);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transform: background-color;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .teams-btn:focus {
   background-color: var(--button-animation);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transform: background-color;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-teams {
@@ -508,8 +519,6 @@ nav {
 
 .customers-link:hover {
   color: var(--iris);
-  transform: color;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:focus {
@@ -604,8 +613,6 @@ nav {
 
 .footer-btn:hover {
   background-color: var(--icon-hover);
-  transform: background-color;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-btn:focus {
@@ -633,6 +640,9 @@ nav {
   color: var(--iris);
   background-color: var(--cloud);
   border: 1px solid var(--corn-flower);
+  transition-property: color, background-color, box-shadow, border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-btn:hover {
@@ -640,6 +650,7 @@ nav {
   background-color: var(--iris);
   box-shadow: 0px 3px 1px rgb(48 30 30 / 10%), 0px 2px 1px rgb(0 0 0 / 8%),
     0px 2px 2px rgb(0 0 0 / 12%);
+  border-color: transparent;
 }
 
 .portfolio-btn:focus {
@@ -660,28 +671,11 @@ nav {
   margin-right: 24px;
   margin-bottom: 48px;
   width: 360px;
-  overflow: hidden;
-  transition: box-shadow 0.2s ease-in-out;
 }
 
-.projects-block:hover {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-}
-
-.projects-block:focus {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-}
-
-.projects-thumb {
+.projects-photo {
   position: relative;
-}
-
-.projects-action {
-  padding: 40px 32px;
-  line-height: 1.5;
-  color: var(--cloud);
+  overflow: hidden;
 }
 
 .projects-overlay {
@@ -690,12 +684,18 @@ nav {
   left: 0;
   width: 360px;
   height: 300px;
+  padding: 40px 32px;
+  line-height: 1.5;
+  color: var(--cloud);
   background-color: #4d5ae5;
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.projects-block:hover .projects-overlay {
+.project-link:hover .projects-overlay {
+  transform: translateY(0);
+}
+.project-link:focus .projects-overlay {
   transform: translateY(0);
 }
 
@@ -703,14 +703,28 @@ nav {
   margin-right: 0px;
 }
 
+.project-link {
+  display: block;
+}
+
+.project-link:hover {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.project-link:focus {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
 .projects-text-block {
-  position: relative;
   padding: 16px;
   padding-top: 32px;
   padding-bottom: 32px;
+  padding: border;
   border-top: 0px;
-  background-color: #ffffff;
   border: 0.5px solid #f4f4fd;
+  background-color: #ffffff;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
